@@ -5,7 +5,7 @@
     "name": "nikita-input-mask",
     "friendlyName": "nikita-input-mask",
     "description": "Mask inputs for credit cards, phone numbers, etc",
-    "icon": "TextExclude",
+    "icon": "LocationBasedDate",
     "settings": [
       {
         "type": "field/string",
