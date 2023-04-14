@@ -49,14 +49,10 @@
     </label>
     <div class="spectrum-Textfield">
       <MaskInput 
-        on:change={(e) => {
-          fieldApi?.setValue(e.detail?.inputState?.visibleValue)
-          console.log("DEET ", e.detail)
-          console.log("TYPE ", typeof e.detail)
-        }} 
-        alwaysShowMask 
-        maskChar="_" 
-        {mask} 
+        on:change={(e) => {fieldApi?.setValue(e.detail?.inputState?.visibleValue)}}
+        alwaysShowMask
+        maskChar="_"
+        {mask}
       />
     </div>
     {#if fieldState?.error}
