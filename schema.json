@@ -24,6 +24,11 @@
         "label": "Mask",
         "defaultValue": "0000-000000-00000",
         "required": true
+      },
+      {
+        "type": "validation/string",
+        "label": "Validation",
+        "key": "validation"
       }
     ]
   }

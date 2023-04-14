@@ -5,6 +5,7 @@
   export let field
   export let label
   export let mask = "0000-000000-00000"
+  export let validation
 
   const component = getContext("component")
   const formContext = getContext("form")
@@ -12,7 +13,7 @@
       
   const formApi = formContext?.formApi
   $: formStep = formStepContext ? $formStepContext || 1 : 1
-  $: formField = formApi?.registerField(field, "string", "", false, null, formStep)
+  $: formField = formApi?.registerField(field, "string", "", false, validation, formStep)
 
   const { styleable } = getContext("sdk")
 
