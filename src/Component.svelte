@@ -36,11 +36,10 @@
   $: labelClass = labelPos === "above" ? "" : `spectrum-FieldLabel--${labelPos}`
 </script>
 
-<div use:styleable={$component.styles}>
+<div class="spectrum-Form-item" use:styleable={$component.styles}>
   {#if !formContext}
     <div class="placeholder">Mask input needs to be wrapped in a form</div>
   {:else}
-  <div class="spectrum-Form-item">
     <label
       class:hidden={!label}
       for={fieldState?.fieldId}
@@ -48,19 +47,21 @@
     >
       {label || " "}
     </label>
-  </div>
-  <div class="spectrum-Textfield">
-    <MaskInput 
-      on:change={(e) => {
-        fieldApi?.setValue(e.detail?.inputState?.visibleValue)
-        console.log("DEET ", e.detail)
-        console.log("TYPE ", typeof e.detail)
-      }} 
-      alwaysShowMask 
-      maskChar="_" 
-      {mask} 
-    />
-  </div>
+    <div class="spectrum-Textfield">
+      <MaskInput 
+        on:change={(e) => {
+          fieldApi?.setValue(e.detail?.inputState?.visibleValue)
+          console.log("DEET ", e.detail)
+          console.log("TYPE ", typeof e.detail)
+        }} 
+        alwaysShowMask 
+        maskChar="_" 
+        {mask} 
+      />
+    </div>
+    {#if fieldState?.error}
+      <div class="error">{fieldState.error}</div>
+    {/if}
   {/if}
 </div>
 
@@ -78,5 +79,13 @@
   .spectrum-FieldLabel--right,
   .spectrum-FieldLabel--left {
     padding-right: var(--spectrum-global-dimension-size-200);
+  }
+  .error {
+    color: var(
+      --spectrum-semantic-negative-color-default,
+      var(--spectrum-global-color-red-500)
+    );
+    font-size: var(--spectrum-global-dimension-font-size-75);
+    margin-top: var(--spectrum-global-dimension-size-75);
   }
 </style>
